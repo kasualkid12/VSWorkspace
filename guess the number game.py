@@ -8,18 +8,30 @@ def if_integer(string):
     else:
         return string.isdigit()
 
+def int_between_1_100(num):
+    while (not if_integer(num)):
+        print("I needed a number between 1 and 100")
+        num = input()
+
+    num = int(num)
+
+    while (not num >= 1) or (not num <= 100):
+        print("I needed a number between 1 and 100")
+        num = input()
+
+        while (not if_integer(num)):
+            print("I needed a number between 1 and 100")
+            num = input()
+
+        num = int(num)
+    print(type(num))
+    return num
+
 answer = random.randint(1, 100)
 print("Pick a random number between 1 and 100")
 player_number = input()
 
-print(type(if_integer(player_number)))
-while (not if_integer(player_number)):
-    print("I needed a number between 1 and 100")
-    player_number = input()
+int_between_1_100(player_number)
 
-player_number = int(player_number)
-
-while (not player_number >= 1) or (not player_number <= 100):
-    print("I needed a number between 1 and 100")
-    player_number = input()
-    player_number = int(player_number)
+if player_number <= answer - 25:
+    print("you are way low, guess higher")
